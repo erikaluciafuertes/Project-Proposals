@@ -49,14 +49,20 @@ Así vive la experiencia un alumno desde que se interesa hasta que aprende:
     *   *Día 1, 08:00 AM:* El sistema envía el Video 1.
     *   *Día 2, 08:00 AM:* El sistema envía el PDF de ejercicios.
     *   *Día 3...:* Y así sucesivamente hasta terminar.
-6.  **Interacción:** Si María tiene una duda, responde al chat. Su mensaje llega a la **Bandeja de Entrada Unificada** donde un tutor humano le responde.
+6.  **Interacción:** Si María tiene una duda, responde al chat.
+    *   **Solución Low-Cost:** Los mensajes llegan a una **Bandeja Básica Integrada** en el mismo panel. Sin pagar herramientas externas extras. Simple y directo.
 
-### 4.3. Componentes del Sistema
-1.  **Panel de Administración (Web Admin):** Donde el dueño ve estadísticas, ingresos y sube los cursos.
-2.  **Motor de Envíos (WhatsApp API):** La conexión oficial con Meta para asegurar que los mensajes lleguen y no sean marcados como spam.
-3.  **Pasarela de Pagos:** Integración segura para cobrar sin intervención manual.
+### 4.3. Componentes del Sistema (Enfoque "Todo en Uno")
+Para reducir costos de mantenimiento y licencias, construiremos los 3 pilares en una sola plataforma:
 
-## 5. Roadmap de Implementación
+1.  **Panel de Administración Simple:**
+    *   Dashboard de ventas.
+    *   Subida de cursos.
+    *   **Bandeja de Mensajes (Inbox):** Para leer y responder dudas desde ahí.
+2.  **Motor de Envíos (WhatsApp Cloud API):** Conexión directa con Meta (sin intermediarios caros) para minimizar el costo por mensaje.
+3.  **Cobros:** Stripe/PayPal integrado.
+
+## 5. Roadmap de Implementación (Rápido y Efectivo)
 
 1.  **Fase 1: Descubrimiento y Definición (Semana 1):** Definir alcance exacto con el cuestionario final.
 2.  **Fase 2: Prototipo (MVP) (Semana 2-3):** Panel básico para programar mensajes manuales y probar la API de WhatsApp.
@@ -65,7 +71,18 @@ Así vive la experiencia un alumno desde que se interesa hasta que aprende:
 
 ---
 
-## 6. Anexo: Cuestionario para Levantamiento de Información (Para el Cliente)
+## 6. Entregables al Cliente
+Al finalizar el proyecto, se entregarán los siguientes items:
+
+1.  **Plataforma Funcional:** URL de acceso al panel de administración listo para usar.
+2.  **Manual de Operaciones (PDF/Loom):** Guía paso a paso para que el profesor sepa cómo subir nuevos cursos sin ayuda técnica.
+3.  **Flujograma Técnico:** Diagrama visual del funcionamiento del sistema (útil para inversores o socios).
+4.  **Repositorio de Código:** Propiedad intelectual del desarrollo.
+5.  **Garantía de Soporte:** 30 días de soporte post-lanzamiento para corregir fallos.
+
+---
+
+## 7. Anexo: Cuestionario para Levantamiento de Información (Para el Cliente)
 
 Usa estas preguntas para obtener los requerimientos finos del cliente:
 
