@@ -14,7 +14,7 @@ gantt
     section Fase 2 - MVP
     Configuración infraestructura    :f2a, after f1c, 5d
     Integración WhatsApp API         :f2b, after f2a, 7d
-    Panel admin básico               :f2c, after f2a, 10d
+    Panel admin básico               :milestone, after f2a, 10d
     Bot de envío automático          :f2d, after f2b, 7d
     
     section Fase 3 - Evaluaciones
