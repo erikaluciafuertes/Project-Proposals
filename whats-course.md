@@ -32,79 +32,11 @@ El cliente vende cursos y capacitaciones a empresas. El modelo B2B funciona así
 
 ---
 
-## 3. Stack Tecnológico
-
-### 3.1 Decisiones Técnicas
-
-| Componente | Decisión | Justificación |
-|------------|----------|---------------|
-| **WhatsApp API** | Meta Cloud API | Oficial, sin intermediarios, mejor precio a escala |
-| **Backend** | Node.js + Express | Async nativo, ideal para webhooks y real-time |
-| **Base de datos** | PostgreSQL | Relacional, robusto, soporte JSON para flexibilidad |
-| **Panel Admin** | React + TailwindCSS | Desarrollo rápido, componentes reutilizables |
-| **Automatización** | Bull Queue (Redis) | Programación de envíos, reintentos, escalable |
-| **IA Conversacional** | OpenAI GPT-4 / Claude | RAG con contexto del curso |
-| **Infraestructura** | Railway / Render | Deploy simple, escalado automático, costo predecible |
-| **Almacenamiento** | Cloudflare R2 | Compatible S3, económico, CDN global |
-| **Autenticación** | JWT + bcrypt | Simple, stateless, estándar |
-
-### 3.2 Arquitectura Simplificada
-
-```mermaid
-flowchart TB
-    subgraph FRONTEND["Frontend (React)"]
-        F1[Panel Admin]
-    end
-    
-    subgraph BACKEND["Backend (Node.js)"]
-        B1[API REST]
-        B2[Webhook Handler]
-        B3[Queue Worker]
-        B4[IA Service]
-    end
-    
-    subgraph DATA["Datos"]
-        D1[(PostgreSQL)]
-        D2[(Redis)]
-        D3[Cloudflare R2]
-    end
-    
-    subgraph EXTERNAL["Externos"]
-        E1[Meta Cloud API]
-        E2[OpenAI/Claude]
-    end
-    
-    F1 --> B1
-    B1 --> D1
-    B1 --> D2
-    B1 --> D3
-    B2 --> E1
-    B3 --> D2
-    B3 --> E1
-    B4 --> E2
-```
-
-### 3.3 Costos Estimados Mensuales
-
-| Servicio | Costo Base | Escala |
-|----------|------------|--------|
-| Railway/Render | $20-50 | Por uso |
-| PostgreSQL (managed) | $15-25 | Incluido o Supabase |
-| Redis | $10-15 | Upstash (serverless) |
-| Cloudflare R2 | $0-15 | 10GB gratis, luego $0.015/GB |
-| Meta WhatsApp API | Variable | ~$0.05-0.08 por conversación/24h |
-| OpenAI API | $20-100 | Según volumen de consultas |
-| **Total estimado** | **$65-205/mes** | Para ~500 usuarios activos |
-
-> **Nota:** Los costos de WhatsApp API dependen del volumen que confirme el cliente. Ver `client-questions.md` para preguntas pendientes.
+> **Nota:** Ver `roadmap.md` para stack tecnológico, cronograma y costos. Ver `client-questions.md` para información pendiente del cliente.
 
 ---
 
-> **Documentos relacionados:** `roadmap.md` para cronograma, `client-questions.md` para información pendiente del cliente.
-
----
-
-## 4. Modelo de Interacción: Híbrido
+## 3. Modelo de Interacción: Híbrido
 
 Para garantizar calidad educativa sin perder escalabilidad:
 

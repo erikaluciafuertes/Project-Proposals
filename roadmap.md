@@ -35,16 +35,77 @@ gantt
 
 ---
 
+## Stack Tecnológico
+
+### Decisiones Técnicas
+
+| Componente | Decisión | Justificación |
+|------------|----------|---------------|
+| **WhatsApp API** | Meta Cloud API | Oficial de Meta, sin intermediarios, mejor precio a escala (~$0.05/conversación) |
+| **Backend** | Node.js + Express | Async nativo, ideal para webhooks y eventos en tiempo real |
+| **Base de datos** | PostgreSQL | Relacional, robusto, soporte JSON para flexibilidad |
+| **Panel Admin** | Angular + TailwindCSS | Framework robusto, tipado fuerte, arquitectura escalable |
+| **Automatización** | Bull Queue (Redis) | Programación de envíos, reintentos automáticos, escalable |
+| **IA Conversacional** | OpenAI GPT-4 / Claude | Mejor calidad de respuesta para contexto educativo (alternativas más baratas: Mistral, Llama 3) |
+| **Infraestructura** | VPS en OVH | Control total, costo fijo predecible, sin vendor lock-in |
+| **Almacenamiento** | Disco VPS + Backups OVH | Archivos en servidor, backups automáticos |
+| **Autenticación** | JWT + bcrypt | Stateless, estándar de la industria |
+
+### Arquitectura
+
+```mermaid
+flowchart TB
+    subgraph VPS["VPS OVH"]
+        subgraph FRONTEND["Frontend (Angular)"]
+            F1[Panel Admin]
+        end
+        
+        subgraph BACKEND["Backend (Node.js)"]
+            B1[API REST]
+            B2[Webhook Handler]
+            B3[Queue Worker]
+            B4[IA Service]
+        end
+        
+        subgraph DATA["Datos"]
+            D1[(PostgreSQL)]
+            D2[(Redis)]
+            D3[Storage Local]
+        end
+    end
+    
+    subgraph EXTERNAL["Servicios Externos"]
+        E1[Meta Cloud API]
+        E2[OpenAI / Claude API]
+    end
+    
+    F1 --> B1
+    B1 --> D1
+    B1 --> D2
+    B1 --> D3
+    B2 <--> E1
+    B3 --> D2
+    B3 --> E1
+    B4 --> E2
+```
+
+### Costos Estimados Mensuales
+
+| Servicio | Costo | Notas |
+|----------|-------|-------|
+| VPS OVH (4GB RAM, 2 vCPU) | ~€15-25/mes | Suficiente para MVP y escala inicial |
+| Meta WhatsApp API | Variable | ~$0.05-0.08 por conversación/24h |
+| OpenAI API | $20-100/mes | Según volumen de consultas IA |
+| Dominio + SSL | ~€10-15/año | Let's Encrypt gratuito |
+| **Total estimado** | **€35-125/mes** | Para ~500 usuarios activos |
+
+> **Nota:** Si el volumen de IA es alto, considerar Mistral o Llama 3 self-hosted para reducir costos.
+
+---
+
 ## Detalle por Fase
 
 ### Fase 1: Discovery y Planificación (1.5 semanas)
-
-**Stack tecnológico ya definido** (ver `whats-course.md` sección 3):
-- **Backend:** Node.js + Express + PostgreSQL
-- **Frontend:** React + TailwindCSS
-- **WhatsApp:** Meta Cloud API
-- **IA:** OpenAI GPT-4 / Claude
-- **Infra:** Railway/Render + Cloudflare R2
 
 ```mermaid
 flowchart LR
@@ -57,7 +118,7 @@ flowchart LR
 |------------|-------------|
 | Respuestas del cliente | Volumen, contenido, cuenta WhatsApp |
 | Documento de alcance | Funcionalidades priorizadas |
-| Ambiente de desarrollo | Repos, CI/CD, staging |
+| Ambiente de desarrollo | Repos, CI/CD, VPS staging |
 
 ---
 
