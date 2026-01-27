@@ -1,58 +1,153 @@
 # Propuesta de Proyecto: Plataforma de Cursos vía WhatsApp ("WhatsCourse")
 
 ## 1. Resumen Ejecutivo
-Esta propuesta detalla el desarrollo de una plataforma educativa que utiliza WhatsApp como el canal principal de entrega de contenido. El objetivo es aprovechar la alta tasa de apertura de WhatsApp para ofrecer micro-aprendizaje (micro-learning) mediante videos, audios y PDFs, combinando la escalabilidad de la automatización con la calidez del soporte humano.
+
+Esta propuesta detalla el desarrollo de una plataforma educativa que utiliza WhatsApp como canal principal de entrega de contenido. El objetivo es aprovechar la alta tasa de apertura de WhatsApp para ofrecer micro-aprendizaje (micro-learning) mediante videos, audios y PDFs, combinando la escalabilidad de la automatización con la calidez del soporte humano.
+
+---
 
 ## 2. Modelo de Negocio
-El cliente al que se le está preparando esta propuesta vende cursos y capacitaciones, por lo que va a una empresa y ofrece un curso o capacitacion y la empresa a la que va lecontrata un paquete para sus empleados (por ejemplo 30 empleados). Los que desde su whatsapp deben tener acceso a los cursos. 
-Descartar la pasarela de pagos porque el cliente ya lo tiene resuelto.
-Se debe constriuir una plataforma para seguimientob de los cursos para administradores de la empresa que ofrece el curso, para que sepan los emplados, cual es el curso, el progreso y si aprobo o no, por estudiante.
-Se debe Ofrecer examenes tipo preguntas y respuestas para validar el conocimiento adquirido.
-tambien prponer que mas se puede ofrecer como evaluaciones.
-Tener la opcion de si desea hablar con un tutor humano en caso de que la interaccion con el bot le sea insuficiente. pero iniciallmente va a habla con una ia.
-Hay que valorar si usamos herramientas como chatwoot, n8n, para la plataforma web administrativa o se construye todo desde cero.
-Hay que hacer la parte tecnica si se necesita servidores, herramientas costos tiempo etc.
-Hay que hacer un roadmap 
 
-## 3. Modelo de Interacción: Híbrido
-Para garantizar la calidad educativa sin perder escalabilidad:
+### 2.1 Contexto del Cliente
+El cliente vende cursos y capacitaciones a empresas. El modelo B2B funciona así:
+- El cliente ofrece un curso/capacitación a una empresa
+- La empresa contrata un paquete para sus empleados (ej: 30 empleados)
+- Los empleados acceden a los cursos desde su WhatsApp personal
 
-*   **Entrega de Contenido (Automatizada):** Un "Bot" o sistema programado se encarga de enviar las lecciones puntualmente (ej. todos los días a las 8:00 AM).
-    *   *Ejemplo:* "¡Buenos días! Aquí tienes la lección de hoy sobre 'Finanzas Personales' 📄 [PDF] + 🎥 [Video]"
-*   **Soporte y Dudas (Humano):**
-    *   Los alumnos pueden responder a los mensajes del bot.
-    *   Un panel de administración centraliza estos mensajes para que *tutores humanos* respondan dudas específicas.
+### 2.2 Alcance del Proyecto
 
-## 4. Solución Técnica: El "Centro de Mando"
-La clave del éxito para escalar este negocio no es el contenido en sí, sino la infraestructura que permite gestionar cientos de alumnos sin volverse loco. "WhatsCourse" actúa como un cerebro central que orquesta todo.
+| Incluido | Excluido |
+|----------|----------|
+| Plataforma de gestión de cursos | Pasarela de pagos (ya resuelta por el cliente) |
+| Panel administrativo para seguimiento | CRM de ventas |
+| Sistema de evaluaciones | |
+| Integración con WhatsApp Business API | |
 
-### 4.1. ¿Por qué se necesita una plataforma?
-Sin una plataforma, la gestión es manual y propensa a errores: guardar contactos uno a uno, enviar archivos a mano.
-**Con WhatsCourse:**
-*   El profesor sube el contenido **una sola vez**.
-*   El sistema trabaja 24/7 inscribiendo alumnos y enviando clases.
+### 2.3 Funcionalidades Clave
 
-### 4.2. Flujo de Usuario (Paso a Paso)
-Así vive la experiencia un alumno desde que se interesa hasta que aprende:
+1. **Panel Administrativo:** Seguimiento de cursos por empresa, progreso por estudiante, estado de aprobación
+2. **Sistema de Evaluación:** Exámenes tipo pregunta/respuesta para validar conocimiento
+3. **Soporte Híbrido:** Interacción inicial con IA, escalamiento a tutor humano cuando sea necesario
+4. **Métricas y Reportes:** Dashboard con KPIs de avance y completitud
 
-3.  **Registro Inmediato:** Un adminstrador agrega el número del usuario a la base de datos del curso, puede ser manual o importando un archivo csv con los numeros.
-4.  **Bienvenida Mágica:** En menos de 1 minuto, el usuario recibe un WhatsApp automático: *"¡Hola María! Bienvenida al curso. Aquí tienes tu acceso"*.
-5.  **Goteo de Contenido (Drip):**
-    *   *Día 1, 08:00 AM:* El sistema envía el Video 1.
-    *   *Día 2, 08:00 AM:* El sistema envía el PDF de ejercicios.
-    *   *Día 3...:* Y así sucesivamente hasta terminar.
-6.  **Interacción:** Si María tiene una duda, escribe al whatsapp del curso.
-    *   **Solución Low-Cost:** Los mensajes llegan a una **Bandeja Básica Integrada** en el mismo panel. Sin pagar herramientas externas extras. Simple y directo.
+---
 
+## 3. Evaluación Técnica Pendiente
 
-Entregables al Cliente
-Cuestionario para Levantamiento de Información (Para el Cliente)
-### Sobre el Negocio
-2.  **¿Qué volumen de alumnos esperas manejar en el primer año?** (50, 500, 5.000? Esto define la infraestructura técnica y costos de WhatsApp API).
-3.  **¿Tienes ya contenido creado (videos/pdfs)?** ¿En qué formato están?
-### Sobre la Operativa
-4.  **¿Cuántos tutores o personas de soporte tendrán acceso al sistema para responder mensajes?**
-5.  **¿Deseas que los alumnos interactúen entre ellos (Grupos) o que sea una comunicación privada 1-a-1 (Broadcast)?** *Nota: 1-a-1 es mejor para cursos premium.*
-6.  **¿Necesitas emitir certificados automáticos al finalizar el curso?**
-### Sobre Tecnología
-7.  **¿Tienes ya una cuenta de WhatsApp Business verificada o número dedicado para esto?**
+| Decisión | Opciones a Evaluar |
+|----------|---------------------|
+| Plataforma web administrativa | Chatwoot + n8n vs. Desarrollo a medida |
+| Infraestructura | Servidores dedicados vs. Cloud (AWS/GCP) |
+| WhatsApp API | Twilio vs. 360dialog vs. Meta Cloud API |
+
+> **Nota:** Ver documento `roadmap.md` para cronograma detallado y `client-questions.md` para preguntas al cliente.
+
+---
+
+## 4. Modelo de Interacción: Híbrido
+
+Para garantizar calidad educativa sin perder escalabilidad:
+
+| Componente | Tipo | Descripción |
+|------------|------|-------------|
+| **Entrega de Contenido** | Automatizada | Bot envía lecciones en horarios programados (ej: 8:00 AM) |
+| **Resolución de Dudas** | IA + Humano | Chatbot IA responde inicialmente; escala a tutor si es necesario |
+| **Evaluaciones** | Automatizada | Exámenes con calificación automática |
+| **Seguimiento** | Panel Web | Dashboard para administradores |
+
+**Ejemplo de mensaje automático:**
+> "¡Buenos días! Aquí tienes la lección de hoy sobre 'Finanzas Personales' 📄 [PDF] + 🎥 [Video]"
+
+---
+
+## 5. Arquitectura del Sistema
+
+```mermaid
+flowchart TB
+    subgraph ADMIN["Panel Administrativo"]
+        A1[Gestión de Cursos]
+        A2[Gestión de Empresas/Estudiantes]
+        A3[Reportes y Métricas]
+        A4[Bandeja de Mensajes]
+    end
+    
+    subgraph BACKEND["Backend"]
+        B1[API REST]
+        B2[Motor de Automatización]
+        B3[Sistema de Evaluaciones]
+        B4[IA Conversacional]
+    end
+    
+    subgraph WHATSAPP["Canal WhatsApp"]
+        W1[WhatsApp Business API]
+    end
+    
+    subgraph USUARIOS["Usuarios Finales"]
+        U1[Estudiantes]
+    end
+    
+    ADMIN --> BACKEND
+    BACKEND --> W1
+    W1 <--> U1
+```
+
+---
+
+## 6. Flujo de Usuario
+
+```mermaid
+sequenceDiagram
+    participant Admin as Administrador
+    participant Sistema as WhatsCourse
+    participant WA as WhatsApp API
+    participant User as Estudiante
+    
+    Admin->>Sistema: Carga lista de estudiantes (CSV/manual)
+    Sistema->>WA: Envía mensaje de bienvenida
+    WA->>User: "¡Hola María! Bienvenida al curso..."
+    
+    loop Cada día programado
+        Sistema->>WA: Envía lección del día
+        WA->>User: Video/PDF/Audio
+    end
+    
+    User->>WA: "Tengo una duda..."
+    WA->>Sistema: Mensaje recibido
+    Sistema->>Sistema: IA procesa consulta
+    alt IA puede responder
+        Sistema->>WA: Respuesta automática
+        WA->>User: Respuesta
+    else Requiere tutor
+        Sistema->>Admin: Notificación en bandeja
+        Admin->>Sistema: Respuesta manual
+        Sistema->>WA: Respuesta del tutor
+        WA->>User: Respuesta
+    end
+    
+    Sistema->>WA: Envía examen
+    WA->>User: Preguntas de evaluación
+    User->>WA: Respuestas
+    Sistema->>Sistema: Califica automáticamente
+    Sistema->>Admin: Actualiza progreso
+```
+
+---
+
+## 7. Propuesta de Tipos de Evaluación
+
+| Tipo | Descripción | Automatizable |
+|------|-------------|---------------|
+| **Opción múltiple** | Preguntas con 4 opciones, una correcta | ✅ Sí |
+| **Verdadero/Falso** | Afirmaciones a validar | ✅ Sí |
+| **Respuesta corta** | Palabras clave esperadas | ✅ Parcial (IA) |
+| **Escala Likert** | Autoevaluación 1-5 | ✅ Sí |
+| **Caso práctico** | Análisis de situación | ❌ Requiere tutor |
+
+---
+
+## 8. Documentos Relacionados
+
+| Documento | Descripción |
+|-----------|-------------|
+| `roadmap.md` | Cronograma de desarrollo por fases |
+| `client-questions.md` | Cuestionario para levantamiento de información |
