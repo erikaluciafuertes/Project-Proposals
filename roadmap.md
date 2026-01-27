@@ -9,7 +9,7 @@ gantt
     section Fase 1 - Discovery
     Levantamiento de requisitos      :f1a, 2026-02-01, 5d
     Definición de alcance            :f1b, after f1a, 3d
-    Selección de stack tecnológico   :f1c, after f1b, 4d
+    Validación con cliente           :f1c, after f1b, 2d
     
     section Fase 2 - MVP
     Configuración infraestructura    :f2a, after f1c, 5d
@@ -37,22 +37,27 @@ gantt
 
 ## Detalle por Fase
 
-### Fase 1: Discovery y Planificación (2 semanas)
+### Fase 1: Discovery y Planificación (1.5 semanas)
+
+**Stack tecnológico ya definido** (ver `whats-course.md` sección 3):
+- **Backend:** Node.js + Express + PostgreSQL
+- **Frontend:** React + TailwindCSS
+- **WhatsApp:** Meta Cloud API
+- **IA:** OpenAI GPT-4 / Claude
+- **Infra:** Railway/Render + Cloudflare R2
 
 ```mermaid
 flowchart LR
     A[Reunión inicial] --> B[Cuestionario cliente]
-    B --> C[Análisis de requisitos]
-    C --> D[Documento de alcance]
-    D --> E[Propuesta técnica final]
+    B --> C[Validación de alcance]
+    C --> D[Kick-off desarrollo]
 ```
 
 | Entregable | Descripción |
 |------------|-------------|
-| Documento de requisitos | Lista completa de funcionalidades validada |
-| Arquitectura técnica | Diagrama de componentes y tecnologías |
-| Estimación de costos | Desglose de infraestructura y desarrollo |
-| Cronograma detallado | Fechas de entrega por milestone |
+| Respuestas del cliente | Volumen, contenido, cuenta WhatsApp |
+| Documento de alcance | Funcionalidades priorizadas |
+| Ambiente de desarrollo | Repos, CI/CD, staging |
 
 ---
 
@@ -151,7 +156,7 @@ flowchart LR
 
 ```mermaid
 pie title Distribución de Tiempo por Fase
-    "Discovery" : 2
+    "Discovery" : 1.5
     "MVP" : 4
     "Evaluaciones" : 3
     "IA y Soporte" : 3
@@ -160,13 +165,13 @@ pie title Distribución de Tiempo por Fase
 
 | Fase | Duración | Acumulado |
 |------|----------|-----------|
-| Discovery | 2 semanas | 2 semanas |
-| MVP | 4 semanas | 6 semanas |
-| Evaluaciones | 3 semanas | 9 semanas |
-| IA y Soporte | 3 semanas | 12 semanas |
-| Lanzamiento | 3 semanas | **15 semanas** |
+| Discovery | 1.5 semanas | 1.5 semanas |
+| MVP | 4 semanas | 5.5 semanas |
+| Evaluaciones | 3 semanas | 8.5 semanas |
+| IA y Soporte | 3 semanas | 11.5 semanas |
+| Lanzamiento | 3 semanas | **14.5 semanas** |
 
-**Tiempo total estimado: 3.5 - 4 meses**
+**Tiempo total estimado: ~3.5 meses**
 
 ---
 
