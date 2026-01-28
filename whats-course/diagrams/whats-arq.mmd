@@ -1,0 +1,26 @@
+flowchart TB
+    subgraph ADMIN["Panel Administrativo"]
+        A1[Gestión de Cursos]
+        A2[Gestión de Empresas/Estudiantes]
+        A3[Reportes y Métricas]
+        A4[Bandeja de Mensajes]
+    end
+    
+    subgraph BACKEND["Backend"]
+        B1[API REST]
+        B2[Motor de Automatización]
+        B3[Sistema de Evaluaciones]
+        B4[IA Conversacional]
+    end
+    
+    subgraph WHATSAPP["Canal WhatsApp"]
+        W1[WhatsApp Business API]
+    end
+    
+    subgraph USUARIOS["Usuarios Finales"]
+        U1[Estudiantes]
+    end
+    
+    ADMIN --> BACKEND
+    BACKEND --> W1
+    W1 <--> U1

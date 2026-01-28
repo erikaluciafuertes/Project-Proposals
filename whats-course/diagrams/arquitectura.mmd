@@ -1,0 +1,33 @@
+flowchart TB
+    subgraph VPS["VPS OVH"]
+        subgraph FRONTEND["Frontend (Angular)"]
+            F1[Panel Admin]
+        end
+        
+        subgraph BACKEND["Backend (Node.js)"]
+            B1[API REST]
+            B2[Webhook Handler]
+            B3[Queue Worker - pg-boss]
+            B4[IA Service]
+        end
+        
+        subgraph DATA["Datos"]
+            D1[(PostgreSQL + pg-boss)]
+            D2[Keycloak]
+        end
+    end
+    
+    subgraph EXTERNAL["Servicios Externos"]
+        E1[Meta Cloud API]
+        E2[OpenAI / Claude API]
+        E3[Backblaze B2 / Cloudflare R2]
+    end
+    
+    F1 --> D2
+    F1 --> B1
+    B1 --> D1
+    B1 --> E3
+    B2 <--> E1
+    B3 --> D1
+    B3 --> E1
+    B4 --> E2

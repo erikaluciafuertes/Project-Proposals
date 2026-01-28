@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant Admin as Administrador
+    participant Sistema as WhatsCourse
+    participant WA as WhatsApp API
+    participant User as Estudiante
+    
+    Admin->>Sistema: Carga lista de estudiantes (CSV/manual)
+    Sistema->>WA: Envía mensaje de bienvenida
+    WA->>User: ¡Hola María! Bienvenida al curso...
+    
+    loop Cada día programado
+        Sistema->>WA: Envía lección del día
+        WA->>User: Video/PDF/Audio
+    end
+    
+    User->>WA: Tengo una duda...
+    WA->>Sistema: Mensaje recibido
+    Sistema->>Sistema: IA procesa consulta
+    alt IA puede responder
+        Sistema->>WA: Respuesta automática
+        WA->>User: Respuesta
+    else Requiere tutor
+        Sistema->>Admin: Notificación en bandeja
+        Admin->>Sistema: Respuesta manual
+        Sistema->>WA: Respuesta del tutor
+        WA->>User: Respuesta
+    end
+    
+    Sistema->>WA: Envía examen
+    WA->>User: Preguntas de evaluación
+    User->>WA: Respuestas
+    Sistema->>Sistema: Califica automáticamente
+    Sistema->>Admin: Actualiza progreso

@@ -1,0 +1,35 @@
+gantt
+    title Roadmap WhatsCourse - Desarrollo por Fases
+    dateFormat  YYYY-MM-DD
+    
+    section Fase 1 - Discovery
+    Levantamiento de requisitos      :f1a, 2026-02-01, 5d
+    Validación de alcance            :f1b, after f1a, 3d
+    Aprobación cliente               :f1c, after f1b, 2d
+    
+    section Fase 2 - MVP
+    Configuración VPS + Keycloak     :f2a, after f1c, 5d
+    Integración WhatsApp API         :f2b, after f2a, 7d
+    Panel admin (Angular)            :f2c, after f2b, 10d
+    Sistema envío programado         :f2d, after f2c, 5d
+    Pruebas internas MVP             :f2e, after f2d, 3d
+    
+    section Fase 3 - Evaluaciones
+    Editor de exámenes               :f3a, after f2e, 5d
+    Calificación automática          :f3b, after f3a, 5d
+    Reportes de notas                :f3c, after f3b, 3d
+    
+    section Fase 4 - IA y Soporte
+    Integración OpenAI/Claude        :f4a, after f3c, 7d
+    Chatbot conversacional           :f4b, after f4a, 5d
+    Bandeja para tutores             :f4c, after f4b, 5d
+    Evaluación respuestas con IA     :f4d, after f4c, 3d
+    
+    section Fase 5 - QA y Lanzamiento
+    Pruebas integrales               :f5a, after f4d, 5d
+    Beta con usuarios reales         :f5b, after f5a, 7d
+    Ajustes y corrección bugs        :f5c, after f5b, 5d
+    Despliegue producción            :f5d, after f5c, 3d
+    
+    section Buffer
+    Contingencia (+15%)              :f6a, after f5d, 10d
