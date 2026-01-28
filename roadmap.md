@@ -9,29 +9,35 @@ gantt
     
     section Fase 1 - Discovery
     Levantamiento de requisitos      :f1a, 2026-02-01, 5d
-    Definición de alcance            :f1b, after f1a, 3d
-    Validación con cliente           :f1c, after f1b, 2d
+    Validación de alcance            :f1b, after f1a, 3d
+    Aprobación cliente               :f1c, after f1b, 2d
     
     section Fase 2 - MVP
-    Configuración infraestructura    :f2a, after f1c, 5d
+    Configuración VPS + Keycloak     :f2a, after f1c, 5d
     Integración WhatsApp API         :f2b, after f2a, 7d
-    Panel admin básico               :f2c, after f2b, 10d
-    Bot de envío automático          :f2d, after f2c, 7d
+    Panel admin (Angular)            :f2c, after f2b, 10d
+    Sistema envío programado         :f2d, after f2c, 5d
+    Pruebas internas MVP             :f2e, after f2d, 3d
     
     section Fase 3 - Evaluaciones
-    Sistema de exámenes              :f3a, after f2d, 10d
+    Editor de exámenes               :f3a, after f2e, 5d
     Calificación automática          :f3b, after f3a, 5d
-    Reportes de progreso             :f3c, after f3b, 5d
+    Reportes de notas                :f3c, after f3b, 3d
     
     section Fase 4 - IA y Soporte
-    Integración chatbot IA           :f4a, after f3c, 10d
-    Escalamiento a tutores           :f4b, after f4a, 5d
-    Bandeja de mensajes              :f4c, after f4b, 5d
+    Integración OpenAI/Claude        :f4a, after f3c, 7d
+    Chatbot conversacional           :f4b, after f4a, 5d
+    Bandeja para tutores             :f4c, after f4b, 5d
+    Evaluación respuestas con IA     :f4d, after f4c, 3d
     
-    section Fase 5 - Lanzamiento
-    Pruebas con usuarios reales      :f5a, after f4c, 10d
-    Ajustes y correcciones           :f5b, after f5a, 7d
-    Despliegue producción            :f5c, after f5b, 3d
+    section Fase 5 - QA y Lanzamiento
+    Pruebas integrales               :f5a, after f4d, 5d
+    Beta con usuarios reales         :f5b, after f5a, 7d
+    Ajustes y corrección bugs        :f5c, after f5b, 5d
+    Despliegue producción            :f5d, after f5c, 3d
+    
+    section Buffer
+    Contingencia (+15%)              :f6a, after f5d, 10d
 ```
 
 ---
@@ -113,105 +119,149 @@ flowchart TB
 flowchart LR
     A[Reunión inicial] --> B[Cuestionario cliente]
     B --> C[Validación de alcance]
-    C --> D[Kick-off desarrollo]
+    C --> D[Aprobación para iniciar]
 ```
+
+**Entregables AL CLIENTE:**
 
 | Entregable | Descripción |
 |------------|-------------|
-| Respuestas del cliente | Volumen, contenido, cuenta WhatsApp |
-| Documento de alcance | Funcionalidades priorizadas |
-| Ambiente de desarrollo | Repos, CI/CD, VPS staging |
+| Documento de alcance firmado | Funcionalidades confirmadas, lo que entra y lo que NO |
+| Cronograma acordado | Fechas de entrega por fase |
+
+**Configuración interna (no entregable):**
+- Repositorios Git
+- Pipeline CI/CD
+- VPS staging
+
+**Dependencias del cliente:**
+- Respuestas al cuestionario (`client-questions.md`)
+- Cuenta WhatsApp Business verificada
+- Acceso a contenido de ejemplo (1 curso mínimo)
 
 ---
 
-### Fase 2: MVP - Producto Mínimo Viable (4 semanas)
+### Fase 2: MVP - Producto Mínimo Viable (5 semanas)
+
+> **Nota:** En esta fase NO hay IA. Los mensajes de estudiantes llegan pero no se responden automáticamente hasta Fase 4.
 
 ```mermaid
 flowchart TB
     subgraph MVP["Alcance MVP"]
-        M1[Registro de estudiantes]
-        M2[Envío automático de contenido]
-        M3[Panel admin básico]
-        M4[Integración WhatsApp]
+        M1[Panel Admin]
+        M2[Gestión de Cursos]
+        M3[Gestión de Estudiantes]
+        M4[Envío Programado]
+        M5[Integración WhatsApp]
     end
     
-    M1 --> M4
+    M1 --> M2
+    M1 --> M3
     M2 --> M4
-    M3 --> M1
-    M3 --> M2
+    M3 --> M5
+    M4 --> M5
 ```
 
 **Funcionalidades del MVP:**
-- Carga de estudiantes (manual + CSV)
-- Creación de cursos con lecciones
-- Programación de envío de contenido (drip)
-- Vista de estudiantes por curso
-- Conexión con WhatsApp Business API
 
-**Criterio de éxito:** Un curso completo funcionando end-to-end con 10 estudiantes de prueba.
+| Funcionalidad | Descripción | Para quién |
+|---------------|-------------|------------|
+| Carga de estudiantes | Manual + importar CSV con números | Administrador del cliente |
+| Creación de cursos | Subir videos, PDFs, audios, definir orden | Administrador del cliente |
+| Envío programado ("drip") | Goteo de contenido: envía lección 1 el día 1, lección 2 el día 2, etc. | Automático |
+| Vista de progreso | Ver qué estudiantes recibieron qué lección | Administrador del cliente |
+| Integración WhatsApp | Conexión técnica: enviar mensajes, recibir confirmación de entrega | Sistema |
+
+**Criterio de éxito:** Un curso completo enviado a 10 estudiantes de prueba, con registro de entregas.
+
+**Qué NO incluye esta fase:**
+- Responder mensajes de estudiantes (Fase 4)
+- Exámenes (Fase 3)
+- IA conversacional (Fase 4)
 
 ---
 
-### Fase 3: Sistema de Evaluaciones (3 semanas)
+### Fase 3: Sistema de Evaluaciones (2.5 semanas)
+
+> **Nota:** Solo evaluaciones automáticas (opción múltiple, V/F). La evaluación con IA de respuestas abiertas es Fase 4.
 
 ```mermaid
 flowchart LR
-    A[Estudiante recibe examen] --> B[Responde por WhatsApp]
-    B --> C[Sistema procesa respuestas]
-    C --> D{Tipo de pregunta}
-    D -->|Opción múltiple| E[Calificación automática]
-    D -->|Respuesta abierta| F[IA evalúa o escala]
-    E --> G[Actualiza progreso]
-    F --> G
+    A[Admin crea examen] --> B[Sistema envía a estudiante]
+    B --> C[Estudiante responde por WhatsApp]
+    C --> D[Sistema califica automáticamente]
+    D --> E[Actualiza progreso en panel]
 ```
 
-| Tipo de Evaluación | Prioridad | Fase |
-|--------------------|-----------|------|
-| Opción múltiple | Alta | 3 |
-| Verdadero/Falso | Alta | 3 |
-| Respuesta corta con IA | Media | 4 |
-| Casos prácticos | Baja | Futuro |
+**Funcionalidades:**
+
+| Funcionalidad | Tiempo | Descripción |
+|---------------|--------|-------------|
+| Crear exámenes | 3 días | Editor de preguntas opción múltiple y V/F |
+| Enviar exámenes | 2 días | Por WhatsApp, formato conversacional |
+| Calificación automática | 3 días | Procesar respuestas, calcular nota |
+| Reportes de notas | 2 días | Vista de aprobados/reprobados en panel |
+| Reintentos | 2 días | Permitir repetir examen si reprueba |
+
+**Tipos de evaluación en esta fase:**
+
+| Tipo | Incluido | Calificación |
+|------|----------|-------------|
+| Opción múltiple | ✅ Sí | Automática |
+| Verdadero/Falso | ✅ Sí | Automática |
+| Respuesta abierta | ❌ Fase 4 | Con IA |
+| Casos prácticos | ❌ Futuro | Manual |
 
 ---
 
-### Fase 4: IA Conversacional y Soporte (3 semanas)
+### Fase 4: IA Conversacional y Soporte (4 semanas)
 
 ```mermaid
 flowchart TB
     A[Mensaje de estudiante] --> B{Clasificación IA}
-    B -->|Duda frecuente| C[Respuesta automática]
-    B -->|Consulta compleja| D[Escala a tutor]
-    B -->|Fuera de tema| E[Respuesta genérica]
+    B -->|Duda sobre contenido| C[Respuesta automática con contexto del curso]
+    B -->|Consulta compleja| D[Escala a tutor humano]
+    B -->|Fuera de tema| E[Respuesta genérica + redirección]
     
     D --> F[Notificación en bandeja]
-    F --> G[Tutor responde]
-    G --> H[Mensaje al estudiante]
+    F --> G[Tutor responde desde panel]
+    G --> H[Mensaje al estudiante vía WhatsApp]
 ```
 
-**Componentes:**
-- Chatbot basado en LLM (GPT-4 / Claude)
-- Base de conocimiento por curso
-- Sistema de escalamiento inteligente
-- Bandeja unificada para tutores
+**Funcionalidades:**
+
+| Funcionalidad | Tiempo | Descripción |
+|---------------|--------|-------------|
+| Integración OpenAI/Claude | 7 días | Conexión API, manejo de tokens, retry logic |
+| Chatbot conversacional | 5 días | Respuestas contextuales basadas en contenido del curso |
+| Bandeja para tutores | 5 días | Vista de mensajes pendientes, asignación, respuesta |
+| Evaluación respuestas abiertas | 3 días | IA califica respuestas de texto libre |
+
+**Componentes técnicos:**
+- LLM: OpenAI GPT-4 o Claude (configurable)
+- RAG: Base de conocimiento por curso (PDFs indexados)
+- Escalamiento: Reglas + clasificación IA
+- Bandeja: Tiempo real con WebSockets
 
 ---
 
-### Fase 5: Pruebas y Lanzamiento (3 semanas)
+### Fase 5: QA y Lanzamiento (4 semanas)
 
 ```mermaid
 flowchart LR
-    A[Beta cerrada] --> B[Feedback usuarios]
-    B --> C[Iteración]
-    C --> D[Beta abierta]
+    A[Pruebas integrales] --> B[Beta cerrada]
+    B --> C[Feedback]
+    C --> D[Corrección bugs]
     D --> E[Go-live]
-    E --> F[Monitoreo post-lanzamiento]
+    E --> F[Monitoreo 1 semana]
 ```
 
-| Actividad | Duración | Participantes |
-|-----------|----------|---------------|
-| Beta cerrada | 1 semana | 1 empresa, 20 usuarios |
-| Ajustes | 1 semana | Equipo desarrollo |
-| Lanzamiento | 3 días | Cliente + soporte |
+| Actividad | Duración | Descripción |
+|-----------|----------|-------------|
+| Pruebas integrales | 5 días | QA interno: todos los flujos, casos borde |
+| Beta cerrada | 7 días | 1 empresa cliente, 20-30 usuarios reales |
+| Corrección bugs | 5 días | Fixes de issues encontrados en beta |
+| Despliegue producción | 3 días | Migración, DNS, monitoreo |
 
 ---
 
@@ -220,21 +270,25 @@ flowchart LR
 ```mermaid
 pie title Distribución de Tiempo por Fase
     "Discovery" : 1.5
-    "MVP" : 4
-    "Evaluaciones" : 3
-    "IA y Soporte" : 3
-    "Lanzamiento" : 3
+    "MVP" : 5
+    "Evaluaciones" : 2.5
+    "IA y Soporte" : 4
+    "QA y Lanzamiento" : 4
+    "Buffer" : 2
 ```
 
-| Fase | Duración | Acumulado |
-|------|----------|-----------|
-| Discovery | 1.5 semanas | 1.5 semanas |
-| MVP | 4 semanas | 5.5 semanas |
-| Evaluaciones | 3 semanas | 8.5 semanas |
-| IA y Soporte | 3 semanas | 11.5 semanas |
-| Lanzamiento | 3 semanas | **14.5 semanas** |
+| Fase | Duración | Acumulado | Qué incluye |
+|------|----------|-----------|-------------|
+| Discovery | 1.5 semanas | 1.5 sem | Requisitos, alcance, aprobación |
+| MVP | 5 semanas | 6.5 sem | Panel, cursos, envío WhatsApp |
+| Evaluaciones | 2.5 semanas | 9 sem | Exámenes opción múltiple, notas |
+| IA y Soporte | 4 semanas | 13 sem | Chatbot, bandeja tutores, IA eval |
+| QA y Lanzamiento | 4 semanas | 17 sem | Pruebas, beta, fixes, deploy |
+| **Buffer (+15%)** | 2 semanas | **19 sem** | Contingencia para imprevistos |
 
-**Tiempo total estimado: ~3.5 meses**
+**Tiempo total estimado: ~4.5 meses (19 semanas)**
+
+> ⚠️ **Importante:** El buffer es para imprevistos reales (bugs complejos, cambios de requisitos menores, retrasos del cliente). No es tiempo "extra" para agregar funcionalidades.
 
 ---
 
