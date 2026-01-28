@@ -6,6 +6,7 @@
 gantt
     title Roadmap WhatsCourse - Desarrollo por Fases
     dateFormat  YYYY-MM-DD
+    
     section Fase 1 - Discovery
     Levantamiento de requisitos      :f1a, 2026-02-01, 5d
     Definición de alcance            :f1b, after f1a, 3d
@@ -14,8 +15,8 @@ gantt
     section Fase 2 - MVP
     Configuración infraestructura    :f2a, after f1c, 5d
     Integración WhatsApp API         :f2b, after f2a, 7d
-    Panel admin básico               :f2c, after f2a, 10d
-    Bot de envío automático          :f2d, after f2b, 7d
+    Panel admin básico               :f2c, after f2b, 10d
+    Bot de envío automático          :f2d, after f2c, 7d
     
     section Fase 3 - Evaluaciones
     Sistema de exámenes              :f3a, after f2d, 10d
@@ -25,7 +26,7 @@ gantt
     section Fase 4 - IA y Soporte
     Integración chatbot IA           :f4a, after f3c, 10d
     Escalamiento a tutores           :f4b, after f4a, 5d
-    Bandeja de mensajes              :f4c, after f4a, 7d
+    Bandeja de mensajes              :f4c, after f4b, 5d
     
     section Fase 5 - Lanzamiento
     Pruebas con usuarios reales      :f5a, after f4c, 10d
@@ -45,11 +46,11 @@ gantt
 | **Backend** | Node.js + Express | Async nativo, ideal para webhooks y eventos en tiempo real |
 | **Base de datos** | PostgreSQL | Relacional, robusto, soporte JSON para flexibilidad |
 | **Panel Admin** | Angular + TailwindCSS | Framework robusto, tipado fuerte, arquitectura escalable |
-| **Automatización** | Bull Queue (Redis) | Programación de envíos, reintentos automáticos, escalable |
+| **Colas/Tareas** | pg-boss (PostgreSQL) | Usa la misma DB, sin servicio extra, suficiente para este volumen |
 | **IA Conversacional** | OpenAI GPT-4 / Claude | Mejor calidad de respuesta para contexto educativo (alternativas más baratas: Mistral, Llama 3) |
 | **Infraestructura** | VPS en OVH | Control total, costo fijo predecible, sin vendor lock-in |
-| **Almacenamiento** | Disco VPS + Backups OVH | Archivos en servidor, backups automáticos |
-| **Autenticación** | JWT + bcrypt | Stateless, estándar de la industria |
+| **Almacenamiento** | Backblaze B2 o Cloudflare R2 | Cloud especializado, económico (~$0.005/GB), CDN incluido, compatible S3 |
+| **Autenticación** | Keycloak | SSO, gestión de roles, escalable a múltiples empresas cliente, estándar enterprise |
 
 ### Arquitectura
 
@@ -63,28 +64,28 @@ flowchart TB
         subgraph BACKEND["Backend (Node.js)"]
             B1[API REST]
             B2[Webhook Handler]
-            B3[Queue Worker]
+            B3[Queue Worker - pg-boss]
             B4[IA Service]
         end
         
         subgraph DATA["Datos"]
-            D1[(PostgreSQL)]
-            D2[(Redis)]
-            D3[Storage Local]
+            D1[(PostgreSQL + pg-boss)]
+            D2[Keycloak]
         end
     end
     
     subgraph EXTERNAL["Servicios Externos"]
         E1[Meta Cloud API]
         E2[OpenAI / Claude API]
+        E3[Backblaze B2 / Cloudflare R2]
     end
     
+    F1 --> D2
     F1 --> B1
     B1 --> D1
-    B1 --> D2
-    B1 --> D3
+    B1 --> E3
     B2 <--> E1
-    B3 --> D2
+    B3 --> D1
     B3 --> E1
     B4 --> E2
 ```
@@ -93,11 +94,12 @@ flowchart TB
 
 | Servicio | Costo | Notas |
 |----------|-------|-------|
-| VPS OVH (4GB RAM, 2 vCPU) | ~€15-25/mes | Suficiente para MVP y escala inicial |
+| VPS OVH (8GB RAM, 4 vCPU) | ~€25-40/mes | Keycloak requiere más RAM |
+| Backblaze B2 / Cloudflare R2 | ~€5-15/mes | ~$0.005/GB, 10GB gratis en R2 |
 | Meta WhatsApp API | Variable | ~$0.05-0.08 por conversación/24h |
 | OpenAI API | $20-100/mes | Según volumen de consultas IA |
 | Dominio + SSL | ~€10-15/año | Let's Encrypt gratuito |
-| **Total estimado** | **€35-125/mes** | Para ~500 usuarios activos |
+| **Total estimado** | **€50-155/mes** | Para ~500 usuarios activos |
 
 > **Nota:** Si el volumen de IA es alto, considerar Mistral o Llama 3 self-hosted para reducir costos.
 
