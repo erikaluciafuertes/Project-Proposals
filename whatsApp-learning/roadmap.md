@@ -150,7 +150,7 @@ flowchart LR
     A[Reunión inicial] --> B[Cuestionario cliente]
     B --> C[Validación de alcance]
     C --> D[Aprobación para iniciar]
-    D --> E["✅ Hito 1"]
+    D --> E[" Hito 1"]
 ```
 
 **Desglose semanal:**
@@ -245,7 +245,7 @@ flowchart LR
     B --> C[Estudiante responde por WhatsApp]
     C --> D[Sistema califica automáticamente]
     D --> E[Actualiza progreso en panel]
-    E --> F["✅ Hito 4"]
+    E --> F[" Hito 4"]
 ```
 
 **Desglose semanal:**
@@ -270,8 +270,8 @@ flowchart LR
 
 | Tipo | Incluido | Calificación |
 |------|----------|-------------|
-| Opción múltiple | ✅ Sí | Automática |
-| Verdadero/Falso | ✅ Sí | Automática |
+| Opción múltiple |  Sí | Automática |
+| Verdadero/Falso |  Sí | Automática |
 | Respuesta abierta | ❌ Fase 4 | Con IA |
 | Casos prácticos | ❌ Futuro | Manual |
 
@@ -334,7 +334,7 @@ flowchart LR
     A[Pruebas integrales] --> B[Beta cerrada]
     B --> C[Corrección bugs]
     C --> D[Go-live]
-    D --> E["✅ Hito 7"]
+    D --> E[" Hito 7"]
 ```
 
 **Desglose semanal:**
