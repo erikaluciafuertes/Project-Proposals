@@ -1,6 +1,6 @@
 # Cuestionario para Levantamiento de Información
 
-Este cuestionario debe completarse antes de iniciar el desarrollo del proyecto WhatsCourse. Las respuestas definirán el alcance técnico, costos e infraestructura necesaria.
+Este cuestionario debe completarse antes de iniciar el desarrollo del proyecto WhatsApp Learning. Las respuestas definirán el alcance técnico, costos e infraestructura necesaria.
 
 ---
 

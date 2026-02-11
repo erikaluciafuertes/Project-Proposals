@@ -1,10 +1,10 @@
-# Roadmap del Proyecto WhatsCourse
+# Roadmap del Proyecto WhatsApp Learning
 
 ## Visión General
 
 ```mermaid
 gantt
-    title Roadmap WhatsCourse - Desarrollo por Fases
+    title Roadmap WhatsApp Learning - Desarrollo por Fases
     dateFormat  YYYY-MM-DD
     
     section Fase 1 - Discovery

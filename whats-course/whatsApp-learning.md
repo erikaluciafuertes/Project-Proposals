@@ -1,4 +1,4 @@
-# Propuesta de Proyecto: Plataforma de Cursos vía WhatsApp ("WhatsCourse")
+# Propuesta de Proyecto: Plataforma de Cursos vía WhatsApp ("WhatsApp Learning")
 
 ## 1. Resumen Ejecutivo
 
@@ -90,7 +90,7 @@ flowchart TB
 ```mermaid
 sequenceDiagram
     participant Admin as Administrador
-    participant Sistema as WhatsCourse
+    participant Sistema as WhatsApp Learning
     participant WA as WhatsApp API
     participant User as Estudiante
     
