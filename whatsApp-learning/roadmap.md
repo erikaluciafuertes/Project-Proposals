@@ -358,7 +358,7 @@ flowchart LR
 ## Estimación de Tiempos Total
 
 ```mermaid
-pie title Distribución de Tiempo por Fase (17 semanas)
+pie title Distribución de Tiempo por Fase
     "Discovery (2 sem)" : 2
     "MVP (5 sem)" : 5
     "Evaluaciones (3 sem)" : 3
