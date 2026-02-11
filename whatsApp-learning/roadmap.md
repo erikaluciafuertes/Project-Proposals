@@ -4,7 +4,7 @@
 
 ```mermaid
 gantt
-    title Roadmap WhatsApp Learning - 17 Semanas
+    title Roadmap WhatsApp Learning
     dateFormat  YYYY-MM-DD
     
     section Fase 1 - Discovery
@@ -34,15 +34,6 @@ gantt
     Pruebas integrales               :f5a, after f4d, 5d
     Beta con usuarios reales         :f5b, after f5a, 5d
     Corrección bugs + Despliegue     :f5c, after f5b, 5d
-
-    section Hitos
-    Hito 1 - Alcance firmado              :milestone, m1, after f1c, 0d
-    Hito 2 - Login y panel admin           :milestone, m2, 2026-03-20, 0d
-    Hito 3 - MVP WhatsApp funcional        :milestone, m3, after f2e, 0d
-    Hito 4 - Evaluaciones completas        :milestone, m4, after f3c, 0d
-    Hito 5 - Chatbot IA funcionando        :milestone, m5, 2026-05-15, 0d
-    Hito 6 - IA completa + bandeja tutores :milestone, m6, after f4d, 0d
-    Hito 7 - Go-live producción            :milestone, m7, after f5c, 0d
 ```
 
 ---
