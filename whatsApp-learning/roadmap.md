@@ -54,9 +54,8 @@ gantt
 
 ---
 
-## Equipo Mínimo Requerido
+## Equipo Requerido
 
-El equipo es:
 
 | Rol | Dedicación | Responsabilidades |
 |-----|------------|-------------------|
@@ -67,7 +66,7 @@ El equipo es:
 
 > **Resumen:** Mínimo **3 personas a tiempo completo + 1 PM parcial**. Los 2 desarrolladores trabajan en paralelo (backend + frontend) lo cual es clave para cumplir los plazos.
 
-> ⚠️ **Riesgo:** Al eliminar el buffer de contingencia, cualquier retraso significativo (cambios de alcance, bugs complejos, retrasos del cliente en entregables) impactará directamente la fecha de entrega. Se recomienda disciplina estricta en la gestión de cambios.
+> **Riesgo:** Cualquier retraso significativo (cambios de alcance, bugs complejos, retrasos del cliente en entregables) impactará directamente la fecha de entrega. Se recomienda disciplina estricta en la gestión de cambios.
 
 ---
 
