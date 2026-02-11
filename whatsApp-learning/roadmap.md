@@ -210,9 +210,9 @@ flowchart TB
 |--------|-------------|------|
 | **Semana 3** | Configuración VPS producción, instalación Keycloak, base de datos PostgreSQL, esquema inicial | |
 | **Semana 4** | Integración WhatsApp Business API, webhook handler, envío/recepción de mensajes básicos | |
-| **Semana 5** | Panel admin Angular: login con Keycloak, CRUD de cursos, CRUD de estudiantes (manual + CSV) | **🟢 Hito 2**: Login + Panel admin funcional |
+| **Semana 5** | Panel admin Angular: login con Keycloak, CRUD de cursos, CRUD de estudiantes (manual + CSV) | ** Hito 2**: Login + Panel admin funcional |
 | **Semana 6** | Sistema de envío programado (drip), motor de colas pg-boss, lógica de goteo de lecciones | |
-| **Semana 7** | Pruebas internas del MVP, vista de progreso en panel, envío de curso completo a 10 estudiantes de prueba | **🟢 Hito 3**: MVP completo |
+| **Semana 7** | Pruebas internas del MVP, vista de progreso en panel, envío de curso completo a 10 estudiantes de prueba | ** Hito 3**: MVP completo |
 
 **Funcionalidades del MVP:**
 
@@ -254,7 +254,7 @@ flowchart LR
 |--------|-------------|------|
 | **Semana 8** | Editor de exámenes en panel (opción múltiple, V/F), asociar exámenes a lecciones/cursos | |
 | **Semana 9** | Envío de exámenes por WhatsApp en formato conversacional, motor de calificación automática | |
-| **Semana 10** | Reportes de notas (aprobados/reprobados), sistema de reintentos, ajustes de UX del flujo completo | **🟢 Hito 4**: Evaluaciones completas |
+| **Semana 10** | Reportes de notas (aprobados/reprobados), sistema de reintentos, ajustes de UX del flujo completo | ** Hito 4**: Evaluaciones completas |
 
 **Funcionalidades:**
 
@@ -300,9 +300,9 @@ flowchart TB
 | Semana | Actividades | Hito |
 |--------|-------------|------|
 | **Semana 11** | Integración OpenAI/Claude API, manejo de tokens, retry logic, sistema RAG (indexar PDFs de cursos) | |
-| **Semana 12** | Chatbot conversacional: respuestas contextuales basadas en contenido del curso, clasificación de mensajes | **🟢 Hito 5**: Chatbot IA respondiendo |
+| **Semana 12** | Chatbot conversacional: respuestas contextuales basadas en contenido del curso, clasificación de mensajes | ** Hito 5**: Chatbot IA respondiendo |
 | **Semana 13** | Bandeja de mensajes para tutores: vista de pendientes, asignación, respuesta desde panel (WebSockets) | |
-| **Semana 14** | Evaluación de respuestas abiertas con IA, ajustes de prompts, pruebas de calidad de respuestas | **🟢 Hito 6**: IA completa |
+| **Semana 14** | Evaluación de respuestas abiertas con IA, ajustes de prompts, pruebas de calidad de respuestas | ** Hito 6**: IA completa |
 
 **Funcionalidades:**
 
@@ -343,7 +343,7 @@ flowchart LR
 |--------|-------------|------|
 | **Semana 15** | QA interno: pruebas de todos los flujos end-to-end, pruebas de carga, seguridad básica, casos borde | |
 | **Semana 16** | Beta cerrada con 1 empresa cliente (20-30 usuarios reales), recopilación de feedback | |
-| **Semana 17** | Corrección de bugs encontrados en beta, despliegue a producción, DNS, monitoreo post-deploy | **🟢 Hito 7**: Go-live |
+| **Semana 17** | Corrección de bugs encontrados en beta, despliegue a producción, DNS, monitoreo post-deploy | ** Hito 7**: Go-live |
 
 | Actividad | Duración | Descripción |
 |-----------|----------|-------------|
@@ -389,12 +389,3 @@ pie title Distribución de Tiempo por Fase
 | Definición de evaluaciones | Cliente | Antes de Semana 8 | Bloquea Fase 3 |
 | Acceso a tutores para pruebas | Cliente | Antes de Semana 13 | Bloquea pruebas de bandeja |
 | Empresa para beta cerrada | Cliente | Antes de Semana 16 | Bloquea beta de Fase 5 |
-
----
-
-## Próximos Pasos
-
-1. Completar cuestionario del cliente (`client-questions.md`)
-2. Validar presupuesto y tiempos
-3. Firmar contrato / orden de trabajo
-4. Kick-off del proyecto (inicio Semana 1)
