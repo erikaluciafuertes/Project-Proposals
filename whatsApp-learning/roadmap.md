@@ -44,29 +44,19 @@ gantt
 
 | Hito | Semana | Qué puede observar el cliente |
 |------|--------|-------------------------------|
-| **🟢 Hito 1** | Semana 2 | Documento de alcance firmado, cronograma acordado, entorno staging accesible |
-| **🟢 Hito 2** | Semana 5 | **Login funcional**, panel admin con gestión de cursos y estudiantes, infraestructura WhatsApp conectada |
-| **🟢 Hito 3** | Semana 7 | **MVP completo**: envío de lecciones por WhatsApp a estudiantes de prueba, vista de progreso en panel |
-| **🟢 Hito 4** | Semana 10 | **Evaluaciones funcionando**: crear exámenes desde panel, estudiantes responden por WhatsApp, calificación automática, reportes de notas |
-| **🟢 Hito 5** | Semana 12 | **Chatbot IA respondiendo**: estudiantes hacen preguntas por WhatsApp y reciben respuestas contextuales del curso |
-| **🟢 Hito 6** | Semana 14 | **IA completa**: bandeja de tutores para mensajes escalados, evaluación de respuestas abiertas con IA |
-| **🟢 Hito 7** | Semana 17 | **Plataforma en producción**: desplegada, estable, con beta cerrada completada y bugs corregidos |
-
-```mermaid
-flowchart LR
-    H1["🟢 Hito 1\nSemana 2\nAlcance firmado"] --> H2["🟢 Hito 2\nSemana 5\nLogin + Panel"]
-    H2 --> H3["🟢 Hito 3\nSemana 7\nMVP WhatsApp"]
-    H3 --> H4["🟢 Hito 4\nSemana 10\nEvaluaciones"]
-    H4 --> H5["🟢 Hito 5\nSemana 12\nChatbot IA"]
-    H5 --> H6["🟢 Hito 6\nSemana 14\nIA Completa"]
-    H6 --> H7["🟢 Hito 7\nSemana 17\nGo-live"]
-```
+| **Hito 1** | Semana 2 | Documento de alcance firmado, cronograma acordado.
+| **Hito 2** | Semana 5 | **Login funcional**, panel admin con gestión de cursos y estudiantes, infraestructura WhatsApp conectada |
+| **Hito 3** | Semana 7 | **MVP completo**: envío de lecciones por WhatsApp a estudiantes de prueba, vista de progreso en panel |
+| **Hito 4** | Semana 10 | **Evaluaciones funcionando**: crear exámenes desde panel, estudiantes responden por WhatsApp, calificación automática, reportes de notas |
+| **Hito 5** | Semana 12 | **Chatbot IA respondiendo**: estudiantes hacen preguntas por WhatsApp y reciben respuestas contextuales del curso |
+| **Hito 6** | Semana 14 | **IA completa**: bandeja de tutores para mensajes escalados, evaluación de respuestas abiertas con IA |
+| **Hito 7** | Semana 17 | **Plataforma en producción**: desplegada, estable, con beta cerrada completada y bugs corregidos |
 
 ---
 
 ## Equipo Mínimo Requerido
 
-Para cumplir con las **17 semanas** sin buffer, el equipo mínimo es:
+El equipo es:
 
 | Rol | Dedicación | Responsabilidades |
 |-----|------------|-------------------|
